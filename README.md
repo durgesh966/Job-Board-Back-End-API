@@ -58,25 +58,62 @@ This is a Job Board API built with Node.js, Express, MySQL, and Sequelize, follo
 #### Auth
 
 - `POST /api/auth/register` - Register a new user
+<!-- {
+  "username": "string",
+  "email": "string",
+  "password": "string",
+  "role": "string"  // either "employer" or "jobseeker"
+} -->
+
 - `POST /api/auth/login` - Log in a user
+<!-- {
+  "email": "string",
+  "password": "string"
+} -->
+
 
 #### Jobs
 
 - `GET /api/jobs` - Get all job listings
 - `POST /api/jobs` - Post a new job (employers only)
+<!-- {
+  "title": "string",
+  "description": "string",
+  "location": "string",
+  "category": "string"
+} -->
+
 - `GET /api/jobs/:id` - Get a job listing by ID
 - `PUT /api/jobs/:id` - Update a job listing by ID (employers only)
+<!-- {
+  "title": "string",
+  "description": "string",
+  "location": "string",
+  "category": "string"
+} -->
+
 - `DELETE /api/jobs/:id` - Delete a job listing by ID (employers only)
 
 #### Applications
 
 - `POST /api/applications` - Apply for a job with a resume upload
+<!-- {
+  "jobId": "integer",
+  "coverLetter": "string"
+} -->
+
 - `GET /api/applications` - Get all applications (employers only)
 
 #### Users
 
 - `GET /api/users/profile` - Get user profile
 - `PUT /api/users/profile` - Update user profile
+<!-- {
+  "username": "string",
+  "email": "string",
+  "password": "string" // optional
+} -->
+
 
 ### Middleware
 
