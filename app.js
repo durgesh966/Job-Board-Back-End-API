@@ -13,6 +13,8 @@ const applicationRoutes = require('./routes/applicationRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 app.use(bodyParser.json());
+app.use('/uploads', express.static('uploads'));
+
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/applications', applicationRoutes);
@@ -22,11 +24,13 @@ app.get("/", (req, res) => {
   res.send("Hello i am Durgeh");
 });
 
+app.listen(port, () => {
+  console.log(`Serer Listening on http://localhost:${port}`.bgGreen.black);
+});
+
 sequelize.sync()
   .then(() => {
-    app.listen(port, () => {
-      console.log(`Serer Listening on http://localhost:${port}`.bgGreen.black);
-    })
+    console.log('Database connected');
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
