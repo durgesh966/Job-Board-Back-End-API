@@ -4,8 +4,7 @@ const sequelize = require('../config/database');
 const User = sequelize.define('User', {
   username: {
     type: DataTypes.STRING,
-    allowNull: false,
-    unique: true
+    allowNull: false
   },
   email: {
     type: DataTypes.STRING,
@@ -18,6 +17,7 @@ const User = sequelize.define('User', {
   },
   role: {
     type: DataTypes.ENUM('employer', 'job_seeker'),
+    defaultValue: 'employer',
     allowNull: false
   },
   profilePicture: {
