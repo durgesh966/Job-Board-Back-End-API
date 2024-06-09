@@ -6,6 +6,7 @@ exports.createJob = async (req, res) => {
   const employerId = req.userId; // Assume userId is set by auth middleware
   try {
     const job = await Job.create({ title, description, location, category, employerId });
+    console.log(title, description, location, category, employerId);
     res.status(201).json(job);
   } catch (error) {
     res.status(400).json({ error: error.message });
