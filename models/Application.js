@@ -11,12 +11,11 @@ const Application = sequelize.define('Application', {
     allowNull: false
   },
   resume: {
-    type: DataTypes.STRING,
-    allowNull: false
+    type: DataTypes.STRING
   },
   coverLetter: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: true
   }
 });
 

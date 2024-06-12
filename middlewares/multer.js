@@ -8,8 +8,6 @@ const storage = multer.diskStorage({
       cb(null, 'uploads/profile_pictures/');
     } else if (file.fieldname === 'resume') {
       cb(null, 'uploads/resumes/');
-    } else {
-      cb(new Error('Unexpected field'));
     }
   },
   filename: function (req, file, cb) {
