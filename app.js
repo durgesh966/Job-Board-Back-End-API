@@ -15,10 +15,10 @@ const userRoutes = require('./routes/userRoutes');
 app.use(bodyParser.json());
 app.use('/uploads', express.static('uploads'));
 
-app.use('/people/auth', authRoutes);
-app.use('/job/jobs', jobRoutes);
-app.use('/application/applications', applicationRoutes);
-app.use('/user/users', userRoutes);
+app.use('/auth', authRoutes);
+app.use('/jobs', jobRoutes);
+app.use('/applications', applicationRoutes);
+app.use('/users', userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello i am Durgeh");

@@ -57,7 +57,7 @@ This is a Job Board API built with Node.js, Express, MySQL, and Sequelize, follo
 
 #### Auth
 
-- `POST /people/auth/register` - Register a new user
+- `POST /auth/register` - Register a new user
 <!-- {
   "username": "string",
   "email": "string",
@@ -65,7 +65,7 @@ This is a Job Board API built with Node.js, Express, MySQL, and Sequelize, follo
   "role": "string"  // either "employer" or "jobseeker"
 } -->
 
-- `POST /people/auth/login` - Log in a user
+- `POST /auth/login` - Log in a user
 <!-- {
   "email": "string",
   "password": "string"
@@ -74,8 +74,8 @@ This is a Job Board API built with Node.js, Express, MySQL, and Sequelize, follo
 
 #### Jobs
 
-- `GET /api/jobs` - Get all job listings
-- `POST /api/jobs` - Post a new job (employers only)
+- `GET /jobs` - Get all job listings
+- `POST /jobs` - Post a new job (employers only)
 <!-- {
   "title": "string",
   "description": "string",
@@ -83,8 +83,8 @@ This is a Job Board API built with Node.js, Express, MySQL, and Sequelize, follo
   "category": "string"
 } -->
 
-- `GET /job/jobs/:id` - Get a job listing by ID
-- `PUT /job/jobs/:id` - Update a job listing by ID (employers only)
+- `GET /jobs/:id` - Get a job listing by ID
+- `PUT /jobs/:id` - Update a job listing by ID (employers only)
 <!-- {
   "title": "string",
   "description": "string",
@@ -92,22 +92,22 @@ This is a Job Board API built with Node.js, Express, MySQL, and Sequelize, follo
   "category": "string"
 } -->
 
-- `DELETE /job/jobs/:id` - Delete a job listing by ID (employers only)
+- `DELETE /jobs/:id` - Delete a job listing by ID (employers only)
 
 #### Applications
 
-- `POST /application/applications` - Apply for a job with a resume upload
+- `POST /applications` - Apply for a job with a resume upload
 <!-- {
   "jobId": "integer",
   "coverLetter": "string"
 } -->
 
-- `GET /application/applications` - Get all applications (employers only)
+- `GET /applications` - Get all applications (employers only)
 
 #### Users
 
-- `GET /user/users/profile` - Get user profile
-- `PUT /user/users/profile` - Update user profile
+- `GET /users/profile` - Get user profile
+- `PUT /users/profile` - Update user profile
 <!-- {
   "username": "string",
   "email": "string",
