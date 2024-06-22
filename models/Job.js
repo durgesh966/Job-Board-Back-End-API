@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const Employer = require('./User'); // Assuming you have an Employer model
+const Employer = require('./User');
 
 const Job = sequelize.define('Job', {
   title: {
@@ -29,10 +29,9 @@ const Job = sequelize.define('Job', {
   }
 }, {
   tableName: 'jobs',
-  timestamps: true // Set to false if you don't want createdAt and updatedAt fields
+  timestamps: true
 });
 
-// Establishing associations if not already done elsewhere
 Job.associate = (models) => {
   Job.belongsTo(models.Employer, { foreignKey: 'employerId', as: 'employer' });
 };

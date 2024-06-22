@@ -1,7 +1,7 @@
 const multer = require('multer');
 const path = require('path');
 
-// Set storage options
+// set file path for Profile Picture And Resume And Cover Latter(Optional) 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     if (file.fieldname === 'profilePicture') {
@@ -15,7 +15,8 @@ const storage = multer.diskStorage({
   }
 });
 
-// File filter
+
+// filtering file with the help of there Extention Name
 const fileFilter = (req, file, cb) => {
   const allowedFileTypes = /jpeg|jpg|png|pdf/;
   const mimetype = allowedFileTypes.test(file.mimetype);

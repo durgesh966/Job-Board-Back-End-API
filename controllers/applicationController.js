@@ -1,5 +1,5 @@
 const Application = require('../models/Application');
-const transporter = require('../config/email');
+const sendEmail = require('../config/email');
 const Job = require('../models/Job');
 const User = require('../models/User');
 const uploadMiddleware = require('../middlewares/multer');
@@ -32,14 +32,23 @@ exports.applyForJob = async (req, res) => {
         return res.status(404).json({ error: 'User not found' });
       }
 
-      const mailOptions = {
+      const emailMessage = {
         from: process.env.EMAIL_USER,
-        to: employer.email,
+        to: user.email,
         subject: 'New Job Application',
-        text: `${user.username} has applied for the position of ${job.title}.`
+        html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <h2>New Job Application</h2>
+        <p><strong>${user.username}</strong> has applied for the position of <strong>${job.title}</strong>.</p>
+        <p>Thank you!</p>
+        <p>We will get back to you as soon as possible.</p>
+        <br>
+        <p>Best regards,</p>
+        <p>Company Name</p>
+        </div>`
       };
 
-      transporter.sendMail(mailOptions, (error, info) => {
+      sendEmail.sendMail(emailMessage, (error, info) => {
         if (error) {
           console.error('Email send error:', error);
         }
@@ -74,32 +83,3 @@ exports.getApplications = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
-// exports.applyForJob = async (req, res) => {
-//   const { jobId, resume, coverLetter } = req.body;
-//   const userId = req.userId;
-//   try {
-//     const application = await Application.create({ jobId, userId, resume, coverLetter });
-
-//     // Send email notification
-//     const job = await Job.findByPk(jobId);
-//     const employer = await User.findByPk(job.employerId);
-//     const user = await User.findByPk(userId);
-
-//     const mailOptions = {
-//       from: process.env.EMAIL_USER,
-//       to: employer.email,
-//       subject: 'New Job Application',
-//       text: `${user.username} has applied for the position of ${job.title}.`
-//     };
-
-//     transporter.sendMail(mailOptions, (error, info) => {
-//       if (error) {
-//         return res.status(500).json({ error: error.message });
-//       }
-//       res.status(201).json(application);
-//     });
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };

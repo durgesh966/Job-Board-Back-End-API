@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 
 exports.createJob = async (req, res) => {
   const { title, description, location, category } = req.body;
-  const employerId = req.userId; // Assume userId is set by auth middleware
+  const employerId = req.userId;
   try {
     const job = await Job.create({ title, description, location, category, employerId });
     console.log(title, description, location, category, employerId);
