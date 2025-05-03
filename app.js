@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Serer Listening on http://localhost:${port}`.bgGreen.black);
+  console.log(`Serer Listening on use this url to show project http://localhost:${port}`.bgGreen.black);
 });
 
 sequelize.sync()
